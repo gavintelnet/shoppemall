@@ -143,6 +143,7 @@ export default () => {
         </label>
         <input
           type="file"
+          accept="image/*"
           onChange={(e) => setSelectedFile(e.target.files[0])}
           style={{ display: "none" }}
           // ref={fileInputRef}

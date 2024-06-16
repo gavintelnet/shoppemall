@@ -127,11 +127,6 @@ export default () => {
               </div>
             </div>
           ))}
-        {/* {key && (
-          <div className="chat-loading">
-            <Spin />
-          </div>
-        )} */}
         <div ref={messagesEndRef} />
       </div>
       {preview && (
@@ -140,12 +135,17 @@ export default () => {
         </div>
       )}
       <div className="footer_chat">
-        <FaImage onClick={() => fileInputRef.current.click()} />
+
+        <label htmlFor="file-upload" className="upload-button">
+          <FaImage
+          //  onClick={() => fileInputRef.current.click()}
+          />
+        </label>
         <input
           type="file"
           onChange={(e) => setSelectedFile(e.target.files[0])}
           style={{ display: "none" }}
-          ref={fileInputRef}
+          // ref={fileInputRef}
           id="file-upload"
         />
         <Input.TextArea

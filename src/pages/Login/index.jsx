@@ -53,7 +53,7 @@ export default () => {
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: "Vui lòng nhập tên đăng nhập!",
               },
             ]}
           >
@@ -66,7 +66,7 @@ export default () => {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "Vui lòng nhập mật khẩu!",
               },
             ]}
           >

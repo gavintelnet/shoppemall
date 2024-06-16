@@ -15,8 +15,8 @@ export const Bank = ({ open, onClose }) => {
   const [form] = Form.useForm();
 
   useEffect(() => {
-    if (!user._id) return;
-    getBankUser({ user: user._id }).then((res) => {
+    if (!user?._id) return;
+    getBankUser({ user: user?._id }).then((res) => {
       if (res.status) {
         setBank(res.result.banks);
       } else {
@@ -37,7 +37,7 @@ export const Bank = ({ open, onClose }) => {
           }}
         >
           <div>
-            <p>{user.bankName}</p>
+            <p>{user?.bankName}</p>
             <p>
               {user.status ? "Đã xác thực" : "Chưa xác thực"}
               {user.isDefault ? (
@@ -46,7 +46,7 @@ export const Bank = ({ open, onClose }) => {
             </p>
           </div>
           <div>
-            <span>{maskBankAccount(user.bankNumber)}</span>
+            <span>{maskBankAccount(user?.bankNumber)}</span>
           </div>
         </div>
       </div>
@@ -57,21 +57,21 @@ export const Bank = ({ open, onClose }) => {
       <div>
         <div>
           <p style={{ fontWeight: "bold" }}>Tên chủ tài khoản</p>
-          <p>{user.bankOwner}</p>
+          <p>{user?.bankOwner}</p>
         </div>
         <div>
           <p style={{ fontWeight: "bold" }}>Số tài khoản</p>
-          <p>{user.bankNumber}</p>
+          <p>{user?.bankNumber}</p>
         </div>
         <div>
           <p style={{ fontWeight: "bold" }}>Tên ngân hàng</p>
-          <p>{user.bankName}</p>
+          <p>{user?.bankName}</p>
         </div>
       </div>
     );
   };
   const items = bank.map((item) => ({
-    key: item.bankNumber,
+    key: item?.bankNumber,
     label: lableCollapse(item),
     children: child(item),
   }));
@@ -89,7 +89,7 @@ export const Bank = ({ open, onClose }) => {
         </div>
         <div className="withdraw_detail">
           <div className="item">
-            <p>Tài khoản ngân hàng ({bank.length})</p>
+            <p>Tài khoản ngân hàng ({bank?.length})</p>
           </div>
         </div>
         <div>

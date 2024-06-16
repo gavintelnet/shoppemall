@@ -77,7 +77,7 @@ export default () => {
     e.stopPropagation();
     await sendTextMessage(
       message,
-      user._id,
+      user?._id,
       currentChat?._id,
       setMessage,
       setKey,

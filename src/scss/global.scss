@@ -78,6 +78,11 @@ p {
     max-width: 414px !important;
   }
 }
+@media (min-width: 412px) {
+  .footer_home_container {
+    max-width: 412px !important;
+  }
+}
 @media (min-width: 430px) {
   .footer_home_container {
     max-width: 430px !important;

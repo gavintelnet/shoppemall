@@ -79,8 +79,8 @@ export default () => {
               style={{
                 backgroundColor: "#f2826c",
                 borderRadius: "5px",
-                width: "400px",
                 padding: "15px 0px",
+                width: "100%",
               }}
             >
               Đăng nhập

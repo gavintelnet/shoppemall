@@ -1,0 +1,55 @@
+.payment_container {
+  background-color: #f2f2f2;
+  position: relative;
+  padding-bottom: 125px;
+  min-height: calc(100vh - 125px);
+  border: 1px solid #ccc;
+  .payment_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0px 15px;
+    h3 {
+      margin: 15px;
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+  .detail {
+    background-color: #fff;
+    margin-top: 10px;
+    div {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  .submit_pay {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    svg:nth-child(1) {
+      font-size: 70px;
+    }
+    .infor_pay {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      p:nth-child(1) {
+        font-size: 18px;
+      }
+      p:nth-child(2) {
+        color: #a5a1a1;
+      }
+    }
+  }
+}

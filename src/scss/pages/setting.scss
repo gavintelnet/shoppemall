@@ -1,0 +1,35 @@
+.setting_container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding-bottom: 125px;
+  min-height: calc(100vh - 125px);
+  .header {
+    padding: 0px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .setting_option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e8e7e7;
+    cursor: pointer;
+  }
+  .button_logout {
+    background-color: #ff5259;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+.profile {
+  padding: 10px 15px;
+}

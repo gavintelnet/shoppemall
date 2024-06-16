@@ -1,0 +1,13 @@
+.create_order {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding-bottom: 125px;
+  min-height: calc(100vh - 125px);
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0px 15px;
+  }
+}

@@ -1,0 +1,150 @@
+.account_container {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding-bottom: 125px;
+  min-height: calc(100vh - 125px);
+  .account_infor {
+    display: flex;
+    padding: 15px;
+    background-color: #e44420;
+    gap: 5px;
+    img {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+    }
+    .infor {
+      p {
+        color: #fff;
+        margin: 10px;
+      }
+    }
+  }
+  .account_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg {
+      color: #e65e40;
+      font-size: 18px;
+    }
+    span {
+      margin-left: 8px;
+      font-size: 20px;
+    }
+    p {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .order {
+    padding: 15px;
+    background-color: #fff;
+  }
+  .item_feature {
+    width: 100%;
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 23% 23% 23% 23%;
+    gap: 10px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+      svg {
+        font-size: 30px;
+      }
+      p {
+        white-space: nowrap;
+      }
+    }
+    div:nth-child(3) {
+      gap: 0px;
+    }
+    div:hover {
+      background-color: rgb(187, 243, 243);
+    }
+  }
+  .service {
+    padding: 15px;
+    background-color: #fff;
+    margin-top: 15px;
+    .item_feature {
+      div:nth-child(3) {
+        gap: 10px;
+      }
+    }
+  }
+  .more_option {
+    background-color: #fff;
+    margin: 15px 0px;
+    div {
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e8e7e7;
+      cursor: pointer;
+      p {
+        display: flex;
+        align-self: center;
+        gap: 10px;
+        svg {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+.deposit {
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h3 {
+    margin: 5px;
+  }
+  .balance {
+    background-color: #fff7e8;
+    color: #f7b452;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  .grid_deposit {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 20px;
+    padding-top: 10px;
+    .item {
+      padding: 8px 25px;
+      border: 1px solid #e8e7e7;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+.withdraw_detail {
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .item {
+    border-bottom: 1px solid #e7e7e7;
+    width: 100%;
+    padding: 10px 0px;
+    p {
+      font-weight: 600;
+    }
+    span {
+      font-weight: 400;
+    }
+  }
+}

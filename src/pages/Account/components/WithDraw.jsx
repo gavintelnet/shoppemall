@@ -19,7 +19,6 @@ export const WithDraw = ({ open, onClose, user, refecth, refresh }) => {
   // const [refresh, refecth] = useRefresh();
   const { configWebsite } = useContext(WebsiteConfigContext);
   const handleWithdraw = async (value) => {
-
     setLoading(true);
     const body = { ...value, customer: user?._id, note: "" };
     await withdrawMoney(body)
@@ -131,21 +130,48 @@ export const WithDraw = ({ open, onClose, user, refecth, refresh }) => {
                 },
                 {
                   validator(_, value) {
-                    if (value && parseInt(value) >= configWebsite?.minRut && parseInt(value) <= configWebsite?.maxRut) {
+                    if (
+                      value &&
+                      parseInt(value) >= configWebsite?.minRut &&
+                      parseInt(value) <= configWebsite?.maxRut
+                    ) {
                       return Promise.resolve();
                     }
                     if (value < configWebsite?.minRut) {
-                      return Promise.reject(new Error(`Nhập số tiền lớn hơn hoặc bằng ${formatVND(configWebsite?.minRut)}`));
+                      return Promise.reject(
+                        new Error(
+                          `Nhập số tiền lớn hơn hoặc bằng ${formatVND(
+                            configWebsite?.minRut
+                          )}`
+                        )
+                      );
                     }
                     if (value > configWebsite?.maxRut) {
-                      return Promise.reject(new Error(`Nhập số tiền nhỏ hơn hoặc bằng ${formatVND(configWebsite?.maxRut)}`));
+                      return Promise.reject(
+                        new Error(
+                          `Nhập số tiền nhỏ hơn hoặc bằng ${formatVND(
+                            configWebsite?.maxRut
+                          )}`
+                        )
+                      );
                     }
-                    return Promise.reject(new Error(`Nhập số tiền trong khoảng từ ${formatVND(configWebsite?.minRut)} đến ${formatVND(configWebsite?.maxRut)}`));
+                    return Promise.reject(
+                      new Error(
+                        `Nhập số tiền trong khoảng từ ${formatVND(
+                          configWebsite?.minRut
+                        )} đến ${formatVND(configWebsite?.maxRut)}`
+                      )
+                    );
                   },
                 },
               ]}
             >
-              <InputNumber style={{ width: '100%' }} placeholder={`Vui lòng nhập số tiền từ ${formatVND(configWebsite?.minRut)} đến ${formatVND(configWebsite?.maxRut)}`} />
+              <InputNumber
+                style={{ width: "100%" }}
+                placeholder={`Vui lòng nhập số tiền từ ${formatVND(
+                  configWebsite?.minRut
+                )} đến ${formatVND(configWebsite?.maxRut)}`}
+              />
             </Form.Item>
             <Form.Item>
               <button
@@ -154,7 +180,7 @@ export const WithDraw = ({ open, onClose, user, refecth, refresh }) => {
                   backgroundImage:
                     "linear-gradient(to right, #a0a0a0, #3a3a3a)",
                   borderRadius: "10px",
-                  width: "400px",
+                  width: "100%",
                   padding: "12px 0px",
                   border: "none",
                   color: "#fff",

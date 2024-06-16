@@ -119,7 +119,7 @@ export const Deposit = ({ open, onClose, user }) => {
                   backgroundImage:
                     "linear-gradient(to right, #a0a0a0, #3a3a3a)",
                   borderRadius: "10px",
-                  width: "400px",
+                  width: "100%",
                   padding: "12px 0px",
                   border: "none",
                   color: "#fff",
@@ -134,7 +134,6 @@ export const Deposit = ({ open, onClose, user }) => {
               <div
                 key={item._id}
                 style={{
-                  width: "100%",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",

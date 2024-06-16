@@ -1,6 +1,6 @@
 body {
   background-color: #f2f2f2 !important;
-  max-width: 450px;
+  max-width: 430px;
   margin: 0 auto;
 }
 
@@ -64,7 +64,26 @@ p {
     white-space: nowrap;
     font-size: 0.9em !important;
   }
+  .footer_home_container {
+    max-width: 375px !important;
+  }
 }
+@media (min-width: 390px) {
+  .footer_home_container {
+    max-width: 390px !important;
+  }
+}
+@media (min-width: 414px) {
+  .footer_home_container {
+    max-width: 414px !important;
+  }
+}
+@media (min-width: 430px) {
+  .footer_home_container {
+    max-width: 430px !important;
+  }
+}
+
 #root > div > div.footer_detail > div > p {
   white-space: nowrap;
 }

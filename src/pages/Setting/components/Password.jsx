@@ -79,7 +79,7 @@ export const Password = ({ open, onClose, user }) => {
                 style={{
                   backgroundColor: "#ff5259",
                   borderRadius: "10px",
-                  width: "400px",
+                  width: "100%",
                   padding: "10px 0px",
                   border: "none",
                   color: "#fff",

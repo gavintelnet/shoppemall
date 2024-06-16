@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
-import Slider from "react-slick";
-import { RenderRate } from "../../utils/index";
-import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
+import { GrPrevious } from "react-icons/gr";
 import { TbTruckDelivery } from "react-icons/tb";
-import { Footer } from "./components/Footer";
-import { ModalConfirm } from "./components/ModalConfirm";
+import { useParams } from "react-router-dom";
+import Slider from "react-slick";
+import { useLoading } from "../../context/useLoading";
+import { getDetailProduct } from "../../services/product";
+import { RenderRate, formatVND } from "../../utils/index";
 import { AddToCart } from "./components/AddToCart";
 import { BuyNow } from "./components/BuyNow";
-import { GrPrevious } from "react-icons/gr";
-import { formatVND } from "../../utils/index";
-import { useParams } from "react-router-dom";
-import { getDetailProduct } from "../../services/product";
-import { useLoading } from "../../context/useLoading";
-
+import { Footer } from "./components/Footer";
+import LocalStorage from "../../utils/LocalStorage";
+import { Notification } from "../../helpers/notify";
 export default () => {
   const { setLoading } = useLoading();
   const [open, setOpen] = React.useState(false);
@@ -21,6 +20,7 @@ export default () => {
   const [data, setData] = React.useState();
   const params = useParams();
   const id = params._id;
+  const collections = LocalStorage.getCollection();
   const settings = {
     dots: false,
     // infinite: true,
@@ -30,6 +30,14 @@ export default () => {
   };
   const handleBack = () => {
     window.history.back();
+  };
+  const handleAddCollections = async (values) => {
+    LocalStorage.setCollection(values);
+    Notification("Thêm vào bộ sư tập thành công!", "success");
+  };
+  const handleRemoveCollections = async (values) => {
+    LocalStorage.removeCollection(values);
+    Notification("Đã bỏ yêu thích!", "success");
   };
   useEffect(() => {
     if (!id) return;
@@ -42,6 +50,7 @@ export default () => {
         setLoading(false);
       });
   }, [id]);
+
   return (
     <div className="container" style={{ backgroundColor: "#f2f2f2" }}>
       {data ? (
@@ -74,7 +83,17 @@ export default () => {
                   <span>| {data.sold_amout} đã bán</span>
                 </div>
               </div>
-              <FaRegHeart onClick={() => setOpen(true)} />
+              {collections && collections.some((el) => el._id === data_id) ? (
+                <FaHeart
+                  style={{ color: "red" }}
+                  onClick={() => handleRemoveCollections(data._id)}
+                />
+              ) : (
+                <FaHeart
+                  // style={{ color: "#fff" }}
+                  onClick={() => handleAddCollections(data)}
+                />
+              )}
             </div>
           </div>
           <div className="description">

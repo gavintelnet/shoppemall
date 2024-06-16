@@ -119,8 +119,16 @@ class LocalStorage {
     // await this.remove("cart");
     this.set("cart", newCart)
   }
+  getCollection (){
+    this.get("collection")
+  }
   setCollection (values){
     this.set("collection", values)
+  }
+ async removeCollection (id){
+    const currentCollection = await this.get("collection",[])
+    const newCollect  = currentCollection.filter((item ) => item._id !== id)
+    this.set("collection",newCollect)
   }
 }
 

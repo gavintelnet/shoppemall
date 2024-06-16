@@ -1,7 +1,9 @@
 .home_container {
   // position: relative;
-  min-height: calc(100vh - 125px);
+  background-color: #f2f2f2;
   border: 1px solid #ccc;
+  padding-bottom: 125px;
+  min-height: calc(100vh - 125px);
   .topbar_search {
     // padding: 10px;
     div {
@@ -51,14 +53,13 @@
 .footer_home_container {
   position: fixed;
   bottom: 0;
-  z-index: 111;
+  // z-index: 111;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 70px;
   background-color: #fff;
   border-top: 1px solid #ccc;
-  max-width: 450px;
   width: 100%;
   div {
     display: flex;

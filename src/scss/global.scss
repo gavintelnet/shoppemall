@@ -76,6 +76,11 @@ p {
 //   //   white-space: none !important;
 //   // }
 // }
+@media (max-width: 290px) {
+  .footer_home_container {
+    max-width: 290px !important;
+  }
+}
 @media (min-width: 375px) {
   .footer_home_container {
     max-width: 375px !important;

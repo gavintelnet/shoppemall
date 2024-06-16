@@ -68,6 +68,7 @@ export default () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setSelectedFile(file);
       console.log("Selected file:", file);
     }
   };
@@ -143,7 +144,9 @@ export default () => {
         </label>
         <input
           type="file"
-          onChange={(e) => setSelectedFile(e.target.files[0])}
+          accept="image/*"
+          onChange={handleFileChange}
+          // onChange={(e) => setSelectedFile(e.target.files[0])}
           style={{ display: "none" }}
           // ref={fileInputRef}
           id="file-upload"

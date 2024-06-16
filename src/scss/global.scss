@@ -55,15 +55,28 @@ p {
 }
 @media (max-width: 430px) {
   body {
-    font-size: 0.8em !important;
+    font-size: 0.7em !important;
   }
   .button_pay {
     // padding: 5px !important;
   }
   #root > div > div.category_container > div.menu_left > div > p {
-    white-space: nowrap;
-    font-size: 0.9em !important;
+    // white-space: nowrap;
+    font-size: 0.8em !important;
   }
+  // .footer_home_container {
+  //   max-width: 375px !important;
+  // }
+}
+@media (min-width: 280px) {
+  .footer_home_container {
+    max-width: 280px !important;
+  }
+  // #root > div > div.footer_detail > div > p {
+  //   white-space: none !important;
+  // }
+}
+@media (min-width: 375px) {
   .footer_home_container {
     max-width: 375px !important;
   }
@@ -89,9 +102,9 @@ p {
   }
 }
 
-#root > div > div.footer_detail > div > p {
-  white-space: nowrap;
-}
+// #root > div > div.footer_detail > div > p {
+//   white-space: nowrap !important;
+// }
 .no_resourse {
   width: 100%;
   background-color: #fff;
@@ -120,4 +133,10 @@ p {
 }
 :where(.css-dev-only-do-not-override-zg0ahe).ant-drawer .ant-drawer-header {
   padding: 5px 10px;
+}
+#root > div > div.order > div.item_feature > div > p {
+  text-align: center;
+}
+#root > div > div > div.item_feature > div > p {
+  text-align: center;
 }

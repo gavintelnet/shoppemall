@@ -81,6 +81,16 @@ p {
     max-width: 375px !important;
   }
 }
+@media (max-width: 350px) {
+  .deposit .grid_deposit .item {
+    padding: 2px 5px !important;
+  }
+  .grid_deposit {
+    display: grid;
+    grid-template-columns: 32% 32% 32% !important;
+    gap: 5px !important;
+  }
+}
 @media (min-width: 390px) {
   .footer_home_container {
     max-width: 390px !important;

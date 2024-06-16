@@ -51,7 +51,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      // justify-content: center;
       gap: 10px;
       cursor: pointer;
       border-radius: 10px;
@@ -109,7 +109,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 5px;
+    // padding: 5px;
     font-size: 1.1em;
     font-weight: bold;
   }
@@ -118,6 +118,7 @@
     grid-template-columns: 30% 30% 30%;
     gap: 20px;
     padding-top: 10px;
+    width: 100%;
     .item {
       padding: 8px 25px;
       border: 1px solid #e8e7e7;

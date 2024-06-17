@@ -111,24 +111,26 @@ class LocalStorage {
       console.error("Error updating history in local storage:", error);
     }
   }
-  async removeItemPaid(keyItem){
-    const currentCart = await this.get("cart",[])
-    if(currentCart.length === 1) return this.remove("cart");
-    const newCart = currentCart.filter((item) => item.key !== keyItem)
-    if(!newCart) return;
+  async removeItemPaid(keyItem) {
+    const currentCart = await this.get("cart", []);
+    if (currentCart.length === 1) return this.remove("cart");
+    const newCart = currentCart.filter((item) => item.key !== keyItem);
+    if (!newCart) return;
     // await this.remove("cart");
-    this.set("cart", newCart)
+    this.set("cart", newCart);
   }
-  getCollection (){
-    this.get("collection")
+  getCollection() {
+    this.get("collection");
   }
-  setCollection (values){
-    this.set("collection", values)
+  async setCollection(values) {
+    const currentCollection = await this.get("collection", []);
+    currentCollection.push(values);
+    this.set("collection", currentCollection);
   }
- async removeCollection (id){
-    const currentCollection = await this.get("collection",[])
-    const newCollect  = currentCollection.filter((item ) => item._id !== id)
-    this.set("collection",newCollect)
+  async removeCollection(id) {
+    const currentCollection = await this.get("collection", []);
+    const newCollect = currentCollection.filter((item) => item._id !== id);
+    this.set("collection", newCollect);
   }
 }
 

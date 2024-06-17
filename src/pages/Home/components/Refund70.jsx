@@ -18,6 +18,7 @@ export const Refund70 = ({ banner }) => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    arrows: false,
   };
   return (
     <div className="component_refund">

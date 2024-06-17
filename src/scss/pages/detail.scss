@@ -92,7 +92,7 @@
   z-index: 1;
   bottom: 0;
   display: flex;
-  max-width: 450px;
+  max-width: 430px;
   width: 100%;
   .green_background {
     background-color: #01bfa5;
@@ -108,6 +108,7 @@
     p {
       margin: 0;
       font-size: 0.9em;
+      text-align: center;
     }
     svg {
       font-size: 20px;

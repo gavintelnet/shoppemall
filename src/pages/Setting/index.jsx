@@ -53,6 +53,7 @@ export default () => {
       <div
         className="setting_option"
         onClick={() => {
+          LocalStorage.remove("collection");
           Notification("Xóa bộ nhớ thành công", "success");
         }}
       >

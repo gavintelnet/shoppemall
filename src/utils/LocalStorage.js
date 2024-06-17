@@ -120,7 +120,7 @@ class LocalStorage {
     this.set("cart", newCart);
   }
   getCollection() {
-    this.get("collection");
+    return this.get("collection");
   }
   async setCollection(values) {
     const currentCollection = await this.get("collection", []);

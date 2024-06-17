@@ -28,7 +28,7 @@
       color: #868383;
       font-size: 16px;
       max-width: 400px;
-      padding: 5px;
+      padding: 10px;
     }
     span {
       color: red;
@@ -44,4 +44,18 @@
     color: #fff;
     font-weight: 600;
   }
+}
+.top_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  img {
+    max-width: 150px;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 40px;
 }

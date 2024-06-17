@@ -35,8 +35,11 @@
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
+    .like {
+      width: 19px;
+    }
     svg {
-      font-size: 20px !important;
+      font-size: 18px !important;
       cursor: pointer;
     }
     p:nth-child(1) {
@@ -51,7 +54,6 @@
     .rate_sold {
       display: flex;
       align-items: center;
-
       svg {
         font-size: 20px;
       }

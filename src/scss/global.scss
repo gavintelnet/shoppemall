@@ -2,6 +2,9 @@ body {
   background-color: #f2f2f2 !important;
   max-width: 430px;
   margin: 0 auto;
+  // background-image: url("../../public/bg_login.jpg");
+  // background-size: cover;
+  // background-repeat: no-repeat;
 }
 
 // .ant-input-outlined {
@@ -67,6 +70,9 @@ p {
   // .footer_home_container {
   //   max-width: 375px !important;
   // }
+  .top_bar {
+    display: none !important;
+  }
 }
 // @media (min-width: 280px) {
 //   .footer_home_container {
@@ -116,7 +122,71 @@ p {
     max-width: 428px !important;
   }
 }
-
+// @media (min-width: 768px) {
+//   .footer_home_container {
+//     max-width: 766px !important;
+//   }
+//   body {
+//     max-width: 768px !important;
+//   }
+//   .top_bar {
+//     display: none !important;
+//   }
+//   .footer_detail {
+//     max-width: 768px !important;
+//     width: 100%;
+//     .orange_background {
+//       width: 40% !important;
+//     }
+//     .green_background {
+//       width: 30% !important;
+//     }
+//   }
+// }
+@media (min-width: 1024px) {
+  // body {
+  //   background-image: url("../../public/bg_login.jpg");
+  //   // background-position: 50%;
+  //   padding: 50px 10px 0px 20px;
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   margin-right: 2%;
+  //   margin-top: 6%;
+  // }
+  .form_login {
+    .ant-form-item {
+      margin-bottom: 5px !important;
+    }
+  }
+  #root > div > div.logo {
+    display: none;
+  }
+  .login_container {
+    padding-bottom: 20px !important;
+    min-height: 600px !important;
+    top: 10% !important;
+  }
+  // #root > div > div:nth-child(5) {
+  //   display: none;
+  // }
+  #root > div > div.header > p {
+    display: none;
+  }
+  .login_container > div:nth-child(6) {
+    display: none;
+  }
+}
+// @media (min-width: 1920px) {
+//   body {
+//     background-image: url("../../public/bg_login.jpg");
+//     // background-position: 50%;
+//     padding: 50px 10px 0px 20px;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     margin-right: 8%;
+//     margin-top: 6%;
+//   }
+// }
 // #root > div > div.footer_detail > div > p {
 //   white-space: nowrap !important;
 // }

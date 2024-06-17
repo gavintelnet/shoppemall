@@ -6,9 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopee</title>
   </head>
-
+  <style>
+    body.bg-login {
+      background-image: url("/public/bg_login.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+      async function fetchBackgroundImage() {
+        try {
+          const response = await fetch(
+            `${
+              import.meta.env.VITE_API_BASE_URL
+            }/logo/footer/665701da76b8c058a19a4780`
+          );
+          const data = await response.json();
+          console.log(data);
+          return data.data.images?.url; // assuming the API returns { imageUrl: 'url_to_image' }
+        } catch (error) {
+          console.error("Error fetching background image:", error);
+          return null;
+        }
+      }
+
+      async function updateBackground() {
+        const isLogin = localStorage.getItem("isLogin");
+        if (!isLogin) {
+          const imageUrl = await fetchBackgroundImage();
+          if (imageUrl) {
+            document.body.style.backgroundImage = `url(${imageUrl})`;
+            document.body.classList.add("bg-login");
+          }
+        } else {
+          document.body.style.backgroundImage = "";
+          document.body.classList.remove("bg-login");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        updateBackground();
+      });
+
+      window.addEventListener("popstate", (event) => {
+        updateBackground();
+      });
+
+      window.addEventListener("hashchange", (event) => {
+        updateBackground();
+      });
+
+      const originalPushState = history.pushState;
+      history.pushState = function () {
+        originalPushState.apply(this, arguments);
+        updateBackground();
+      };
+
+      const originalReplaceState = history.replaceState;
+      history.replaceState = function () {
+        originalReplaceState.apply(this, arguments);
+        updateBackground();
+      };
+    </script>
   </body>
 </html>

@@ -7,12 +7,17 @@ import { Notification } from "../../helpers/notify";
 import { loginUser } from "../../services/auth";
 import LocalStorage from "../../utils/LocalStorage";
 import { WebsiteConfigContext } from "../../context/ConfigWebsite";
+import { TopBar } from "../../components/topbar";
+import { useIsLaptopOrDesktop } from "../../utils/responsive";
 
 export default () => {
   const navigate = useNavigate();
   const { setLoading } = useLoading();
   const { bannerFooter } = BannerFooter();
   const { logoHeader } = React.useContext(WebsiteConfigContext);
+  const isLogin = LocalStorage.get("isLogin");
+  const isDesktop = useIsLaptopOrDesktop();
+
   const hadleSubmit = async (values) => {
     setLoading(true);
     await loginUser(values)
@@ -32,9 +37,26 @@ export default () => {
       .finally(() => setLoading(false));
   };
   return (
-    <div className="login_container">
+    <div
+      className="login_container"
+      style={
+        !isLogin && isDesktop
+          ? {
+              position: "fixed",
+              right: "5%",
+              top: "15%",
+              width: "430px",
+            }
+          : {}
+      }
+    >
+      <TopBar />
       <div className="header">
-        <h2>Đăng nhập</h2>
+        <span
+          style={{ fontSize: "20px", fontWeight: "bold", paddingBottom: "5px" }}
+        >
+          Đăng nhập
+        </span>
         <p>Bạn cần giúp đỡ?</p>
       </div>
       <div className="logo">
@@ -77,6 +99,7 @@ export default () => {
             <button
               type="submit"
               style={{
+                marginTop: "20px",
                 backgroundColor: "#f2826c",
                 borderRadius: "5px",
                 padding: "15px 0px",

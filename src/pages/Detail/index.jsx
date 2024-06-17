@@ -12,6 +12,7 @@ import { BuyNow } from "./components/BuyNow";
 import { Footer } from "./components/Footer";
 import LocalStorage from "../../utils/LocalStorage";
 import { Notification } from "../../helpers/notify";
+import { CiHeart } from "react-icons/ci";
 export default () => {
   const { setLoading } = useLoading();
   const [open, setOpen] = React.useState(false);
@@ -20,7 +21,9 @@ export default () => {
   const [data, setData] = React.useState();
   const params = useParams();
   const id = params._id;
+  const [like, setLike] = React.useState(false);
   const collections = LocalStorage.getCollection();
+
   const settings = {
     dots: false,
     // infinite: true,
@@ -34,10 +37,12 @@ export default () => {
   const handleAddCollections = async (values) => {
     LocalStorage.setCollection(values);
     Notification("Thêm vào bộ sư tập thành công!", "success");
+    setLike(true);
   };
   const handleRemoveCollections = async (values) => {
     LocalStorage.removeCollection(values);
     Notification("Đã bỏ yêu thích!", "success");
+    setLike(false);
   };
   useEffect(() => {
     if (!id) return;
@@ -50,7 +55,11 @@ export default () => {
         setLoading(false);
       });
   }, [id]);
-
+  useEffect(() => {
+    if (!collections || !data) return;
+    const likeProduct = collections.some((el) => el?._id === data?._id);
+    setLike(likeProduct);
+  }, [collections]);
   return (
     <div className="container" style={{ backgroundColor: "#f2f2f2" }}>
       {data ? (
@@ -80,20 +89,22 @@ export default () => {
                 <h4>{data.name}</h4>
                 <div className="rate_sold">
                   {RenderRate(5)}
-                  <span>| {data.sold_amout} đã bán</span>
+                  <span>| {data.sold_amout || 0} đã bán</span>
                 </div>
               </div>
-              {collections && collections.some((el) => el._id === data_id) ? (
-                <FaHeart
-                  style={{ color: "red" }}
-                  onClick={() => handleRemoveCollections(data._id)}
-                />
-              ) : (
-                <FaHeart
-                  // style={{ color: "#fff" }}
-                  onClick={() => handleAddCollections(data)}
-                />
-              )}
+              <div className="like">
+                {like ? (
+                  <FaHeart
+                    style={{ color: "red" }}
+                    onClick={() => handleRemoveCollections(data._id)}
+                  />
+                ) : (
+                  <CiHeart
+                    // style={{ fontSize: "30px !important" }}
+                    onClick={() => handleAddCollections(data)}
+                  />
+                )}
+              </div>
             </div>
           </div>
           <div className="description">

@@ -129,7 +129,14 @@ export const AddToCart = ({ open, onClose, data }) => {
               >
                 -
               </div>
-              <div>{total}</div>
+              <input
+                style={{
+                  border: "2px solid #ebebeb",
+                  width: "40px",
+                  textAlign: "center",
+                }}
+                value={total}
+              />
               <div
                 className="except_plus"
                 onClick={() => setTotal((curr) => curr + 1)}

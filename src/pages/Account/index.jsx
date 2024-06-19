@@ -30,8 +30,7 @@ import { getUserDetail } from "../../services/user";
 import { useLoading } from "../../context/useLoading";
 import useRefresh from "../../hooks/useRefresh";
 import { ChatContext } from "../../context/ChatContext";
-import avt from "../../assets/images/user-image.png"
-
+import avt from "../../assets/images/user-image.png";
 
 export default () => {
   const navigate = useNavigate();
@@ -200,6 +199,7 @@ export default () => {
           />
           <Financial
             open={activeDraw === "3"}
+            user={user}
             onClose={() => setActiveDraw("")}
           />
           <Bank open={activeDraw === "5"} onClose={() => setActiveDraw("")} />

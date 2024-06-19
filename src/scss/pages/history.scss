@@ -39,6 +39,7 @@
           padding: 8px;
           color: #868383;
           cursor: pointer;
+          white-space: nowrap;
         }
         .item_btn:hover {
           border: 1px solid aquamarine;
@@ -139,7 +140,7 @@
 }
 .tab_wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 15px 20px;
   background-color: #fff;
   div {
@@ -147,6 +148,8 @@
     cursor: pointer;
     transition: 0.5s;
     padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
   }
   .active_tab {
     color: red;

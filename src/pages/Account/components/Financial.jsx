@@ -1,14 +1,43 @@
-import React from "react";
-import { Drawer, Form, Input } from "antd";
+import { Drawer } from "antd";
+import React, { useEffect } from "react";
+import { useLoading } from "../../../context/useLoading";
+import {
+  getDepositHistorySuccess,
+  getWithdrawHistorySuccess,
+} from "../../../services/wallet";
 import { formatVND } from "../../../utils";
-const bank = {
-  name: "nguyen van nguyen",
-  bank: "Ngân hàng TMCP Á Châu (ACB)",
-  bank_number: "09223232323",
-};
-export const Financial = ({ open, onClose }) => {
-  const [activeTab, setActiveTab] = React.useState("1");
-  const [form] = Form.useForm();
+export const Financial = ({ open, onClose, user }) => {
+  const [activeTab, setActiveTab] = React.useState("2");
+  const [history, setHistory] = React.useState([]);
+  const { setLoading } = useLoading();
+
+  useEffect(() => {
+    if (!user._id) return;
+    setLoading(true);
+    if (activeTab === "2") {
+      getWithdrawHistorySuccess(user._id)
+        .then((res) => {
+          if (res.status) {
+            setHistory(res.result);
+          } else {
+            setHistory([]);
+          }
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
+    } else {
+      getDepositHistorySuccess(user._id)
+        .then((res) => {
+          if (res.status) {
+            setHistory(res.result);
+          } else {
+            setHistory([]);
+          }
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
+    }
+  }, [activeTab]);
   return (
     <>
       <Drawer
@@ -22,12 +51,12 @@ export const Financial = ({ open, onClose }) => {
           <h3>Chi tiết tài chính</h3>
         </div>
         <div className="tab_wrap">
-          <div
+          {/* <div
             className={`${activeTab === "1" && "active_tab"}`}
             onClick={() => setActiveTab("1")}
           >
             Tất cả
-          </div>
+          </div> */}
           <div
             className={`${activeTab === "2" && "active_tab"}`}
             onClick={() => setActiveTab("2")}
@@ -41,9 +70,40 @@ export const Financial = ({ open, onClose }) => {
             Lịch sử nạp
           </div>
         </div>
-        <div className="no_resourse">
-          <div></div>
-          <h2>Không có dữ liệu</h2>
+        <div style={{ padding: "5px 5px" }}>
+          {history.length > 0 ? (
+            history.map((item) => (
+              <div
+                key={item._id}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "5px 10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                  marginBottom: "10px",
+                }}
+              >
+                <div>
+                  <p style={{ fontWeight: 600 }}>
+                    Mã yêu cầu: <span>{item?.code}</span>
+                  </p>
+                  <p>
+                    Số tiền: <span>{formatVND(item.amount || 0)}</span>
+                  </p>
+                </div>
+                <div>
+                  <span style={{ color: "green" }}>{item?.status}</span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="no_resourse">
+              <div></div>
+              <h2>Không có dữ liệu</h2>
+            </div>
+          )}
         </div>
       </Drawer>
     </>

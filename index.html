@@ -25,7 +25,6 @@
             }/logo/footer/665701da76b8c058a19a4780`
           );
           const data = await response.json();
-          console.log(data);
           return data.data.images?.url; // assuming the API returns { imageUrl: 'url_to_image' }
         } catch (error) {
           console.error("Error fetching background image:", error);
@@ -35,7 +34,8 @@
 
       async function updateBackground() {
         const isLogin = localStorage.getItem("isLogin");
-        if (!isLogin) {
+        const path = window.location.pathname;
+        if (path.includes("/login") || path.includes("/register")) {
           const imageUrl = await fetchBackgroundImage();
           if (imageUrl) {
             document.body.style.backgroundImage = `url(${imageUrl})`;

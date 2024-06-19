@@ -2,7 +2,9 @@ import { Drawer } from "antd";
 import React, { useEffect } from "react";
 import { useLoading } from "../../../context/useLoading";
 import {
+  getDepositHistoryByCustomer,
   getDepositHistorySuccess,
+  getWithdrawHistoryByCustomer,
   getWithdrawHistorySuccess,
 } from "../../../services/wallet";
 import { formatVND } from "../../../utils";
@@ -15,7 +17,7 @@ export const Financial = ({ open, onClose, user }) => {
     if (!user._id) return;
     setLoading(true);
     if (activeTab === "2") {
-      getWithdrawHistorySuccess(user._id)
+      getWithdrawHistoryByCustomer(user._id)
         .then((res) => {
           if (res.status) {
             setHistory(res.result);
@@ -26,7 +28,7 @@ export const Financial = ({ open, onClose, user }) => {
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
     } else {
-      getDepositHistorySuccess(user._id)
+      getDepositHistoryByCustomer(user._id)
         .then((res) => {
           if (res.status) {
             setHistory(res.result);
